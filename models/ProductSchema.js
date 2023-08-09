@@ -2,18 +2,18 @@ const mongoose = require("mongoose")
 
 const subschema = mongoose.Schema({
 	categoryId: {
-		type: String,
-		required: true
+		type: mongoose.Types.ObjectId,
+		ref: 'categoryCrud'
 	},
 	subCategoryId: {
-		type: String,
-		required: true
+		type: mongoose.Types.ObjectId,
+		required: 'subcategoryCrud'
 	},
 	pname: {
 		type: String,
 		required: true
 	},
-	pname: {
+	price: {
 		type: String,
 		required: true
 	},

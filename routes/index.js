@@ -34,7 +34,7 @@ routes.delete('/dltsubcategory', subcategoryController.dltsubcategory);
 // product
 
 routes.post('/addproduct', fileupload, ProductController.addproduct);
-routes.get('/viewProduct', passport.authenticate('jwt', { session: false }), ProductController.viewProduct);
+routes.get('/viewProduct', ProductController.viewProduct);
 routes.delete('/dltProduct', ProductController.dltProduct);
 routes.put('/editProduct', fileupload, ProductController.editProduct);
 

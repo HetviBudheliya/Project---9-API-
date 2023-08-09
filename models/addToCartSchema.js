@@ -2,12 +2,12 @@ const mongoose = require("mongoose")
 
 const addtocartschema = mongoose.Schema({
 	categoryId: {
-		type: String,
-		required: true
+		type: mongoose.Types.ObjectId,
+		ref: 'categoryCrud'
 	},
 	subCategoryId: {
-		type: String,
-		required: true
+		type: mongoose.Types.ObjectId,
+		required: 'subcategoryCrud'
 	},
 	pname: {
 		type: String,
