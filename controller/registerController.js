@@ -5,7 +5,7 @@ const index = (req, res) => {
 	return res.json({ message: 'Welcome' });
 }
 
-const registerData = async (req, res) => {
+const insertData = async (req, res) => {
 	try {
 		if (req.body.password == req.body.cpassword) {
 			const add = await crud.create({
@@ -27,7 +27,7 @@ const registerData = async (req, res) => {
 	}
 }
 
-const view = async (req, res) => {
+const viewrecord = async (req, res) => {
 	try {
 		let viewData = await crud.find({});
 		if (viewData) {
@@ -40,8 +40,22 @@ const view = async (req, res) => {
 		return false;
 	}
 }
+const deletedata = async (req, res) => {
+	try {
+		let id = req.query.id;
+		let deleteData = await crud.findByIdAndDelete(id);
+		if (deleteData) {
+			return res.json({ status: 1, messege: "Record successfully Delete" });
+		} else {
+			return res.json({ status: 0, messege: "Record not Delete" });
+		}
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+}
 
-const editData = async (req, res) => {
+const editdata = async (req, res) => {
 	try {
 		let editData = await crud.findByIdAndUpdate(req.body.id, {
 			name: req.body.name,
@@ -59,20 +73,6 @@ const editData = async (req, res) => {
 	}
 }
 
-const deleteData = async (req, res) => {
-	try {
-		let id = req.query.id;
-		let deleteData = await crud.findByIdAndDelete(id);
-		if (deleteData) {
-			return res.json({ status: 1, messege: "Record successfully Delete" });
-		} else {
-			return res.json({ status: 0, messege: "Record not Delete" });
-		}
-	} catch (err) {
-		console.log(err);
-		return false;
-	}
-}
 
 const login = async (req, res) => {
 	try {
@@ -90,9 +90,9 @@ const login = async (req, res) => {
 
 module.exports = {
 	index,
-	registerData,
-	view,
-	editData,
-	deleteData,
+	insertData,
+	viewrecord,
+	deletedata,
+	editdata,
 	login
 }

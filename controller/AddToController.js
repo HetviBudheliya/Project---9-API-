@@ -26,7 +26,7 @@ const addtocart = async (req, res) => {
 	}
 }
 
-const viewaddToCart = async (req, res) => {
+const viewToCart = async (req, res) => {
 	try {
 		const viewData = await addToCartSchema.find({});
 		if (viewData) {
@@ -41,7 +41,7 @@ const viewaddToCart = async (req, res) => {
 	}
 }
 
-const deleteAddToCart = async (req, res) => {
+const dltToCart = async (req, res) => {
 	try {
 		let id = req.query.id;
 		let deleteCategory = await addToCartSchema.findByIdAndDelete(id);
@@ -57,7 +57,7 @@ const deleteAddToCart = async (req, res) => {
 	}
 }
 
-const updateaddToCart = async (req, res) => {
+const editToCart = async (req, res) => {
 	try {
 		const { id, qty } = req.body;
 		const updateCart = await addToCartSchema.findByIdAndUpdate(id, {
@@ -77,7 +77,7 @@ const updateaddToCart = async (req, res) => {
 
 module.exports = {
 	addtocart,
-	viewaddToCart,
-	deleteAddToCart,
-	updateaddToCart
+	viewToCart,
+	dltToCart,
+	editToCart
 }

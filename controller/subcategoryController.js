@@ -1,4 +1,3 @@
-// const catcrud = require('../models/categoryCrud');
 const crud = require('../models/subcategoryCrud');
 
 const addsubcategory = async (req, res) => {
@@ -48,7 +47,7 @@ const editsubcategory = async (req, res) => {
 	}
 }
 
-const deletesubcategory = async (req, res) => {
+const dltsubcategory = async (req, res) => {
 	try {
 		let id = req.query.id;
 		let subcate = await crud.findByIdAndDelete(id);
@@ -67,5 +66,5 @@ module.exports = {
 	addsubcategory,
 	viewsubcategory,
 	editsubcategory,
-	deletesubcategory
+	dltsubcategory
 }

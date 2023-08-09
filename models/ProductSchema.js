@@ -13,7 +13,7 @@ const subschema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	price: {
+	pname: {
 		type: String,
 		required: true
 	},

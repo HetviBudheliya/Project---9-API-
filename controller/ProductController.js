@@ -2,7 +2,7 @@ const ProductSchema = require('../models/ProductSchema');
 
 const fs = require('fs');
 
-const insertProduct = async (req, res) => {
+const addproduct = async (req, res) => {
 	try {
 		const { categoryId, subCategoryId, pname, price, qty, desc } = req.body;
 		let image = "";
@@ -45,7 +45,7 @@ const viewProduct = async (req, res) => {
 	}
 }
 
-const deleteProduct = async (req, res) => {
+const dltProduct = async (req, res) => {
 	try {
 		let id = req.query.id;
 		let deleteCategory = await ProductSchema.findByIdAndDelete(id);
@@ -61,7 +61,7 @@ const deleteProduct = async (req, res) => {
 	}
 }
 
-	const updateProduct = async (req, res) => {
+	const editProduct = async (req, res) => {
 		try {
 			const { id, categoryId, subCategoryId, pname, price, qty, desc } = req.body;
 			if (req.file) {
@@ -124,8 +124,8 @@ const deleteProduct = async (req, res) => {
 
 	
 module.exports = {
-	insertProduct,
-	deleteProduct,
+	addproduct,
 	viewProduct,
-	updateProduct
+	dltProduct,
+	editProduct
 }

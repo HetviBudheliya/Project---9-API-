@@ -13,35 +13,35 @@ const AddToController = require('../controller/AddToController');
 
 // Register Routes
 routes.get('/', registerController.index);
-routes.post('/registerData', registerController.registerData);
+routes.post('/insertData', registerController.insertData);
+routes.get('/viewrecord',passport.authenticate('jwt',{session:false}), registerController.viewrecord);
+routes.delete('/deletedata', registerController.deletedata);
+routes.put('/editdata', registerController.editdata);
 routes.post('/login', registerController.login);
-routes.get('/view',passport.authenticate('jwt',{session:false}), registerController.view);
-routes.put('/editData', registerController.editData);
-routes.delete('/deleteData', registerController.deleteData);
 
 // Category Routes
 routes.post('/addcategory', categoryController.addcategory);
 routes.get('/viewcategory', categoryController.viewcategory);
 routes.put('/editcategory', categoryController.editcategory);
-routes.delete('/deletecategory', categoryController.deletecategory);
+routes.delete('/dltcategory', categoryController.dltcategory);
 
 // Sub Category Routes
 routes.post('/addsubcategory', subcategoryController.addsubcategory);
 routes.get('/viewsubcategory', subcategoryController.viewsubcategory);
 routes.put('/editsubcategory', subcategoryController.editsubcategory);
-routes.delete('/deletesubcategory', subcategoryController.deletesubcategory);
+routes.delete('/dltsubcategory', subcategoryController.dltsubcategory);
 
 // product
 
-routes.post('/insertProduct', fileupload, ProductController.insertProduct);
+routes.post('/addproduct', fileupload, ProductController.addproduct);
 routes.get('/viewProduct', passport.authenticate('jwt', { session: false }), ProductController.viewProduct);
-routes.delete('/deleteProduct', ProductController.deleteProduct);
-routes.put('/updateProduct', fileupload, ProductController.updateProduct);
+routes.delete('/dltProduct', ProductController.dltProduct);
+routes.put('/editProduct', fileupload, ProductController.editProduct);
 
 // addto cart
 routes.post('/addtocart', AddToController.addtocart);
-routes.get('/viewaddToCart', AddToController.viewaddToCart);
-routes.delete('/deleteAddToCart', AddToController.deleteAddToCart);
-routes.put('/updateaddToCart', AddToController.updateaddToCart);
+routes.get('/viewToCart', AddToController.viewToCart);
+routes.delete('/dltToCart', AddToController.dltToCart);
+routes.put('/editToCart', AddToController.editToCart);
 
 module.exports = routes;

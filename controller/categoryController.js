@@ -48,7 +48,7 @@ const editcategory = async (req, res) => {
 	}
 }
 
-deletecategory = async (req, res) => {
+const dltcategory = async (req, res) => {
 	try {
 		let id = req.query.id;
 		let deleteData = await crud.findByIdAndDelete(id);
@@ -68,6 +68,5 @@ module.exports = {
 	addcategory,
 	viewcategory,
 	editcategory,
-	deletecategory
-
+	dltcategory
 }
